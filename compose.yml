@@ -1,0 +1,17 @@
+services:
+  simswap:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: simswap
+    volumes:
+      - ./simswap-include/arcface_model:/home/SimSwap/arcface_model
+      - ./simswap-include/checkpoints/512:/home/SimSwap/checkpoints/512
+      - ./simswap-include/checkpoints/people:/home/SimSwap/checkpoints/people
+      - ./simswap-include/insightface_func/models/antelope:/home/SimSwap/insightface_func/models/antelope
+      - ./simswap-include/parsing_model/checkpoint/79999_iter.pth:/home/SimSwap/parsing_model/checkpoint/79999_iter.pth
+      - ./input:/home/input
+      - ./output:/home/output
+    working_dir: /home/SimSwap
+    stdin_open: true
+    tty: true
